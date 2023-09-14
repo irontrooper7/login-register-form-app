@@ -11,13 +11,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-      <section className="hero is-fullheight">
-        <div className="hero-body">
-          <div className="container">
-            <CardForm />
+        <section className="hero is-fullheight">
+          <div className="hero-body">
+            <div className="container">
+              <CardForm />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </main>
     </>
   )

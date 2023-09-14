@@ -2,6 +2,8 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 const DataUserSingUpSchema = Yup.object().shape({
+	userName: Yup.string()
+		.required('Please enter a user name'),
 	email: Yup.string()
 		.email('Please enter a valid email')
 		.required('Please enter a valid email'),
@@ -16,7 +18,7 @@ export default function SingUpForm() {
 	return (
 		<div className='form'>
 			<Formik
-				initialValues={{email: '', password: '', passwordConfirmation: ''}}
+				initialValues={{userName: '', email: '', password: ''}}
 				validationSchema={DataUserSingUpSchema}
 				onSubmit={values => {
 					console.log(values);
@@ -26,6 +28,13 @@ export default function SingUpForm() {
 					<Form>
 						<div className='is-flex is-flex-direction-column mb-5'>
 							<h1 className='has-text-centered mb-3'><strong>Sing Up</strong></h1>
+							<div className='field'>
+								<label className='label'>User Name</label>
+								<div className='control'>
+									<Field className="input" name="userName" type="userName" />
+								</div>
+								{errors.userName && touched.userName ? (<p className="help is-danger">{errors.userName}</p>) : null}
+							</div>
 							<div className='field'>
 								<label className='label'>Email</label>
 								<div className='control'>
