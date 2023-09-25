@@ -1,10 +1,10 @@
 import CardForm from '../../components/CardForm'
 import Head from 'next/head'
 import Tabs from '../../components/Tabs'
-import LoginForm from '../../components/forms/LoginForm'
-import SingUpForm from '../../components/forms/SingUpForm'
+import useWindowSize from '@/utils/useWindowSize'
 
 export default function Home() {
+  const width = useWindowSize();
   return (
     <>
       <Head>
@@ -17,11 +17,9 @@ export default function Home() {
         <section className="hero is-fullheight">
           <div className="hero-body">
             <div className="container">
-              {/* <CardForm /> */}
-              <Tabs>
-                <LoginForm />
-                <SingUpForm />
-              </Tabs>
+              {width.width >= 768 ? 
+                <CardForm /> : <Tabs />
+              }
             </div>
           </div>
         </section>

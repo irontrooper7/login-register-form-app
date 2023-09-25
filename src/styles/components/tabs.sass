@@ -1,0 +1,20 @@
+.tabs.is-boxed
+    transform: translateY(2px)
+    a
+        border: 2px solid transparent
+        border-radius: 4px 4px 0 0
+        .icon
+            svg
+                font-size: 20px
+                fill: $secondary
+    li.is-active
+        a
+            border-color: $secondary
+            border-bottom-color: $white
+            .icon
+                transform: scale(1.5)
+                svg
+                    fill: $primary
+.content-tabs
+    border: 2px solid $secondary
+    border-radius: 0px 10px 10px 10px
