@@ -1,5 +1,8 @@
-import Head from 'next/head'
 import CardForm from '../../components/CardForm'
+import Head from 'next/head'
+import Tabs from '../../components/Tabs'
+import LoginForm from '../../components/forms/LoginForm'
+import SingUpForm from '../../components/forms/SingUpForm'
 
 export default function Home() {
   return (
@@ -14,7 +17,11 @@ export default function Home() {
         <section className="hero is-fullheight">
           <div className="hero-body">
             <div className="container">
-              <CardForm />
+              {/* <CardForm /> */}
+              <Tabs>
+                <LoginForm />
+                <SingUpForm />
+              </Tabs>
             </div>
           </div>
         </section>

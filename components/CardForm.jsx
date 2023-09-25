@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { gsap } from "gsap";
 import LoginForm from './forms/LoginForm';
-import RegisterForm from './forms/RegisterForm';
+import RegisterForm from './forms/SingUpForm';
 
 export default function CardForm() {
 	const coverRef = useRef();
