@@ -1,7 +1,7 @@
-import CardForm from '../../components/CardForm'
-import Head from 'next/head'
-import Tabs from '../../components/Tabs'
-import useWindowSize from '@/utils/useWindowSize'
+import CardForm from '../../components/CardForm';
+import Head from 'next/head';
+import Tabs from '../../components/Tabs';
+import useWindowSize from '@/utils/useWindowSize';
 
 export default function Home() {
   const width = useWindowSize();

@@ -1,10 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { gsap } from "gsap";
 import LoginForm from './forms/LoginForm';
 import RegisterForm from './forms/SingUpForm';
 
 export default function CardForm() {
 	const coverRef = useRef();
+	const [currentForm, setCurrentForm] = useState(true);
 
 	function changeToSingUp() {
 		gsap.timeline().to(coverRef.current, 0.2, {
@@ -12,6 +13,7 @@ export default function CardForm() {
 		}).to(coverRef.current, 0.2, {
 			width: '50%'
 		})
+		setCurrentForm(false);
 	}
 
 	function changeToLogIn() {
@@ -20,24 +22,33 @@ export default function CardForm() {
 		}).to(coverRef.current, 0.2, {
 			width: '50%'
 		})
+		setCurrentForm(true);
 	}
 
 	return (
 		<div className='card-forms'>
 			<div className='columns is-gapless m-0'>
 				<div className='column is-6'>
-					<LoginForm />
-					<div className='has-text-centered my-5'>
-						<p>Or</p>
-						<p className='action-btn' onClick={() => changeToSingUp()}><strong>Sing up</strong></p>
-					</div>
+					{currentForm === true ?
+						<>
+							<LoginForm />
+							<div className='has-text-centered my-5'>
+								<p>Or</p>
+								<p className='action-btn' onClick={() => changeToSingUp()}><strong>Sing up</strong></p>
+							</div>
+						</> : ''
+					}
 				</div>
 				<div className='column is-6'>
-					<RegisterForm />
-					<div className='has-text-centered my-4'>
-						<p>Or</p>
-						<p className='action-btn' onClick={() => changeToLogIn()}><strong>Login</strong></p>
-					</div>
+					{currentForm === false ?
+						<>
+							<RegisterForm />
+							<div className='has-text-centered my-4'>
+								<p>Or</p>
+								<p className='action-btn' onClick={() => changeToLogIn()}><strong>Login</strong></p>
+							</div>
+						</> : ''
+					}
 				</div>
 			</div>
 			<div className='image cover-card' ref={coverRef}>

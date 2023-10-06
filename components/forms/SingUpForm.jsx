@@ -1,5 +1,7 @@
+import users from '@/utils/api/users';
+import { helpHttp } from '@/utils/helphttp';
 import { Formik, Form, Field } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
 const DataUserSingUpSchema = Yup.object().shape({
@@ -16,16 +18,23 @@ const DataUserSingUpSchema = Yup.object().shape({
 });
 
 export default function SingUpForm() {
+	const [db, setDb] = useState();
 	const [stateForm, setStateForm] = useState(true);
 	const [statusMessage, setStatusMessage] = useState({title: 'Congrats you already register!', message: 'Lorem ipsum dolor sit amet consectetur adipiscing elit dictumst euismod justo dapibus volutpat, parturient pulvinar at imperdiet inceptos porttitor praesent vitae auctor leo.'});
+	let api = helpHttp();
+	let url = "http://localhost:5000/users";
+
+	useEffect(() => {
+		api.get(url).then(res => { console.log(res); });
+	},[]);
+
 	return (
 		<div className='form'>
 			{stateForm ? 
 				<Formik
-					initialValues={{userName: '', email: '', password: ''}}
+					initialValues={{userName: '', email: '', password: '', passwordConfirmation: ''}}
 					validationSchema={DataUserSingUpSchema}
 					onSubmit={values => {
-						console.log(values);
 						setStateForm(false);
 					}}
 				>
